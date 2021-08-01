@@ -59,6 +59,20 @@ public class Tests {
 
     }
 
+    @Test
+    @Order(3)
+    @DisplayName("Removing all items from the cart")
+
+    public void removingAllItemsFromTheCart() {
+
+        ProductsPage.addToCart();
+
+
+
+
+
+    }
+
     @AfterAll
     public void tearDown() {
         closeWebDriver();
