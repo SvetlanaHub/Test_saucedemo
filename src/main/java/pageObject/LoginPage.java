@@ -8,9 +8,14 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class LoginPage extends BaseElements {
 
+    //LOGIN FORM FIELDS
     private final SelenideElement usernameField = $("#user-name");
     private final SelenideElement passwordField = $("#password");
+
+    //BUTTON
     private final SelenideElement loginButton = $("#login-button");
+
+    //DATA
     private static final CharSequence USERNAME = ("standard_user");
     private static final CharSequence PASSWORD = ("secret_sauce");
 

@@ -1,4 +1,28 @@
 package pageObject;
 
+import com.codeborne.selenide.SelenideElement;
+import static com.codeborne.selenide.Selenide.$;
+
 public class CheckoutInformationPage {
+
+    //CHECKOUT FORM FIELDS
+    private final SelenideElement firstNameField = $("#first-name");
+    private final SelenideElement lastNameField = $("#last-name");
+    private final SelenideElement zipPostalCodeField = $("#postal-code");
+
+    //BUTTONS
+    private final SelenideElement continueButton = $("#continue");
+    private final SelenideElement cancelButton = $("#cancel");
+
+    //DATA
+    private static final CharSequence FIRST_NAME = ("Maria");
+    private static final CharSequence LAST_NAME = ("Shevchenko");
+    private static final CharSequence ZIP_POSTAL_CODE = ("256129");
+
+    public void checkoutInformationPage() {
+        firstNameField.sendKeys(FIRST_NAME);
+        lastNameField.sendKeys(LAST_NAME);
+        zipPostalCodeField.sendKeys(ZIP_POSTAL_CODE);
+        continueButton.click();
+    }
 }
