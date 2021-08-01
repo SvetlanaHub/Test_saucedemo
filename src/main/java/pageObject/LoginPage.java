@@ -2,7 +2,6 @@ package pageObject;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -31,9 +30,6 @@ public class LoginPage extends ProductsPage {
 
         open("https://www.saucedemo.com/");
 
-    }
-
-    public void loginPage() {
     }
 }
 

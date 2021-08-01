@@ -1,12 +1,10 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.junit5.ScreenShooterExtension;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import pageObject.*;
-
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -26,15 +24,17 @@ public class Tests {
         LoginPage loginPage = new LoginPage();
         loginPage.openLoginPage();
         loginPage.login();
-        loginPage.products.shouldBe(visible);
-        Assertions.assertEquals("Products", loginPage.products.getText(),"User is not log in");
+        ProductsPage.products.shouldBe(visible);
+        Assertions.assertEquals("Products", ProductsPage.products.getText(),"User is not log in");
 
     }
+
     @Test
     @Order(1)
     @DisplayName("Shopping")
 
     public void shopping() {
+
         ProductsPage.addToCart();
         CartPage.clickToCheckoutButton();
         CheckoutInformationPage.checkout();
@@ -44,6 +44,20 @@ public class Tests {
 
     }
 
+    @Test
+    @Order(2)
+    @DisplayName("Cancellation of purchase")
+
+    public void cancellationOfPurchase() {
+
+        ProductsPage.addToCart();
+        CartPage.clickToCheckoutButton();
+        CheckoutInformationPage.checkout();
+        CheckoutOverviewPage.clickToCancelButton();
+        ProductsPage.products.shouldBe(visible);
+        Assertions.assertEquals("Products", ProductsPage.products.getText(),"User is not log in");
+
+    }
 
     @AfterAll
     public void tearDown() {
