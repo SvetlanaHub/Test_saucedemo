@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class LoginPage extends BaseElements {
+public class LoginPage extends ProductsPage {
 
     //LOGIN FORM FIELDS
     private final SelenideElement usernameField = $("#user-name");

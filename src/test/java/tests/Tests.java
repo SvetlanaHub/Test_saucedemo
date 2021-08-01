@@ -5,7 +5,8 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.junit5.ScreenShooterExtension;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import pageObject.LoginPage;
+import pageObject.*;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -23,10 +24,8 @@ public class Tests {
 
         Configuration.startMaximized = true;
         LoginPage loginPage = new LoginPage();
-        loginPage
-                  .openLoginPage();
-        loginPage
-                .login();
+        loginPage.openLoginPage();
+        loginPage.login();
         loginPage.products.shouldBe(visible);
         Assertions.assertEquals("Products", loginPage.products.getText(),"User is not log in");
 
@@ -36,6 +35,12 @@ public class Tests {
     @DisplayName("Shopping")
 
     public void shopping() {
+        ProductsPage.addToCart();
+        CartPage.clickToCheckoutButton();
+        CheckoutInformationPage.checkout();
+        CheckoutOverviewPage.clickToFinishButton();
+        CheckoutCompletePage.thankYouOrderMessage.shouldBe(visible);
+        Assertions.assertEquals("THANK YOU FOR YOUR ORDER", CheckoutCompletePage.thankYouOrderMessage.getText(),"Error: order not completed");
 
     }
 

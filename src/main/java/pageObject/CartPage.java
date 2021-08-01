@@ -5,11 +5,12 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class CartPage {
 
-    private final SelenideElement checkoutButton = $("#checkout");
+    //BUTTONS
+    private static final SelenideElement checkoutButton = $("#checkout");
     private final SelenideElement removeButton = $("btn btn_secondary btn_small cart_button");
-    private final SelenideElement carPrice = $(".inventory_item_price");
+    private final SelenideElement cartItemPrice = $(".inventory_item_price");
 
-    public void clickToCheckoutButton() {
+    public static void clickToCheckoutButton() {
 
         checkoutButton.click();
 
@@ -22,7 +23,7 @@ public class CartPage {
 
     public void getPrice () {
 
-        carPrice.getText();
+        cartItemPrice.getText();
 
     }
 }
