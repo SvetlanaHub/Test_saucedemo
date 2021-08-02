@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import pageObject.*;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -25,7 +25,7 @@ public class Tests {
         loginPage.openLoginPage();
         loginPage.login();
         ProductsPage.products.shouldBe(visible);
-        Assertions.assertEquals("PRODUCTS", ProductsPage.products.text(),"User is not log in");
+        Assertions.assertEquals("PRODUCTS", ProductsPage.products.getText(),"User is not log in");
 
     }
 
@@ -37,10 +37,11 @@ public class Tests {
 
         ProductsPage.addToCart();
         CartPage.clickToCheckoutButton();
-        CheckoutInformationPage.checkout();
+        CheckoutInformationPage.clickContinue();
         CheckoutOverviewPage.clickToFinishButton();
         CheckoutCompletePage.thankYouOrderMessage.shouldBe(visible);
         Assertions.assertEquals("THANK YOU FOR YOUR ORDER", CheckoutCompletePage.thankYouOrderMessage.getText(),"Error: order not completed");
+        CheckoutCompletePage.clickToBackHomeButton();
 
     }
 
@@ -52,10 +53,10 @@ public class Tests {
 
         ProductsPage.addToCart();
         CartPage.clickToCheckoutButton();
-        CheckoutInformationPage.checkout();
+        CheckoutInformationPage.clickContinue();
         CheckoutOverviewPage.clickToCancelButton();
         ProductsPage.products.shouldBe(visible);
-        Assertions.assertEquals("Products", ProductsPage.products.getText(),"User is not log in");
+        Assertions.assertEquals("PRODUCTS", ProductsPage.products.getText(),"Error: purchase not canceled");
 
     }
 
