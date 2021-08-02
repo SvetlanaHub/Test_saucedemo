@@ -2,14 +2,14 @@ package pageObject;
 
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
-
 public class ProductsPage {
 
     //BUTTONS
-    public static SelenideElement addToCartButton = $("btn btn_primary btn_small btn_inventory");
+    static SelenideElement addToCartButton = $("#add-to-cart-sauce-labs-backpack");
     private static final SelenideElement cartButton = $(".shopping_cart_link");
 
-    public static final SelenideElement products = $(".header_secondary_container");
+    public static final SelenideElement products = $(".title");
+
 
     public static void addToCart() {
 
@@ -17,4 +17,6 @@ public class ProductsPage {
         cartButton.click();
 
     }
+
 }
+

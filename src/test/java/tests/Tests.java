@@ -25,7 +25,7 @@ public class Tests {
         loginPage.openLoginPage();
         loginPage.login();
         ProductsPage.products.shouldBe(visible);
-        Assertions.assertEquals("Products", ProductsPage.products.getText(),"User is not log in");
+        Assertions.assertEquals("PRODUCTS", ProductsPage.products.text(),"User is not log in");
 
     }
 
@@ -66,10 +66,6 @@ public class Tests {
     public void removingAllItemsFromTheCart() {
 
         ProductsPage.addToCart();
-
-
-
-
 
     }
 
