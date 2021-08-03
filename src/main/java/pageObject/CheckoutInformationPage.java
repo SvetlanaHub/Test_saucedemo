@@ -19,7 +19,7 @@ public class CheckoutInformationPage {
     private static final CharSequence LAST_NAME = ("Shevchenko");
     private static final CharSequence ZIP_POSTAL_CODE = ("256129");
 
-    public static void clickContinue() {
+    public static void clickContinueButton() {
         firstNameField.sendKeys(FIRST_NAME);
         lastNameField.sendKeys(LAST_NAME);
         zipPostalCodeField.sendKeys(ZIP_POSTAL_CODE);

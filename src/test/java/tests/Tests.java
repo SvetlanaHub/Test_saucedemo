@@ -37,7 +37,7 @@ public class Tests {
 
         ProductsPage.addToCart();
         CartPage.clickToCheckoutButton();
-        CheckoutInformationPage.clickContinue();
+        CheckoutInformationPage.clickContinueButton();
         CheckoutOverviewPage.clickToFinishButton();
         CheckoutCompletePage.thankYouOrderMessage.shouldBe(visible);
         Assertions.assertEquals("THANK YOU FOR YOUR ORDER", CheckoutCompletePage.thankYouOrderMessage.getText(),"Error: order not completed");
@@ -53,7 +53,7 @@ public class Tests {
 
         ProductsPage.addToCart();
         CartPage.clickToCheckoutButton();
-        CheckoutInformationPage.clickContinue();
+        CheckoutInformationPage.clickContinueButton();
         CheckoutOverviewPage.clickToCancelButton();
         ProductsPage.products.shouldBe(visible);
         Assertions.assertEquals("PRODUCTS", ProductsPage.products.getText(),"Error: purchase not canceled");
@@ -67,7 +67,6 @@ public class Tests {
     public void removingAllItemsFromTheCart() {
 
         ProductsPage.addToCart();
-
     }
 
     @AfterAll
