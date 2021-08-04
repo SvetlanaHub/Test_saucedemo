@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import pageObject.*;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
+import static java.lang.Boolean.parseBoolean;
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -97,20 +98,22 @@ public class Tests {
         ProductsPage.addToCart();
         CartPage.clickToCheckoutButton();
         CheckoutInformationPage.clickContinueButton();
-
-
+        String stringPrice = CheckoutOverviewPage.cartItemTotalPrice.getText().replace("Item total: $", "");
+        Double doublePrice = Double.parseDouble(stringPrice);
+        CheckoutOverviewPage.cartItemTotalPrice.shouldBe(visible);
+        //Assertions.assertFalse(parseBoolean(CheckoutOverviewPage.cartItemTotalPrice.getText()), stringPrice), "The amount is not correct");
 
     }
-
-
-
-
 
     @AfterAll
         public void tearDown() {
+
             closeWebDriver();
+
         }
+
     }
+
 
 
 

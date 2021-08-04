@@ -29,11 +29,6 @@ public class CartPage {
 
     }
 
-        public void getPrice() {
-
-        cartItemPrice.getText();
-
-    }
 
 }
 
