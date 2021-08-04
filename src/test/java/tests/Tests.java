@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import pageObject.*;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-import static java.lang.Boolean.parseBoolean;
+
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
