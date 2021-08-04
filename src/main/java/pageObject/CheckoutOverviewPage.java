@@ -37,5 +37,6 @@ public class CheckoutOverviewPage {
         cartItemTotalPrice.getText();
 
     }
+
 }
 
