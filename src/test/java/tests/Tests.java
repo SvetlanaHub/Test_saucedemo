@@ -1,30 +1,18 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.junit5.ScreenShooterExtension;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.RegisterExtension;
-import org.openqa.selenium.By;
 import pageObject.*;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-import static pageObject.CartPage.clickToRemoveButton;
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class Tests {
-
-    LoginPage loginPage = new LoginPage();
-    ProductsPage productsPage = new ProductsPage();
-    CartPage cartPage = new CartPage();
-    CheckoutInformationPage checkoutInformationPage = new CheckoutInformationPage();
-    CheckoutOverviewPage checkoutOverviewPage = new CheckoutOverviewPage();
-    CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage();
-
 
     @RegisterExtension
     static ScreenShooterExtension screenshotEmAll = new ScreenShooterExtension(true).to("resources/screenshots");
@@ -42,9 +30,9 @@ public class Tests {
 
     public void Login() {
 
-        loginPage.openLoginPage();
-        loginPage.login();
-        productsPage.products.shouldBe(visible);
+        LoginPage.openLoginPage();
+        LoginPage.login();
+        ProductsPage.products.shouldBe(visible);
         Assertions.assertEquals("PRODUCTS", ProductsPage.products.getText(), "User is not log in");
 
     }
@@ -55,13 +43,13 @@ public class Tests {
 
     public void shopping() {
 
-        loginPage.openLoginPage();
-        loginPage.login();
-        productsPage.addToCart();
-        cartPage.clickToCheckoutButton();
+        LoginPage.openLoginPage();
+        LoginPage.login();
+        ProductsPage.addToCart();
+        CartPage.clickToCheckoutButton();
         CheckoutInformationPage.clickContinueButton();
-        checkoutOverviewPage.clickToFinishButton();
-        checkoutCompletePage.thankYouOrderMessage.shouldBe(visible);
+        CheckoutOverviewPage.clickToFinishButton();
+        CheckoutCompletePage.thankYouOrderMessage.shouldBe(visible);
         Assertions.assertEquals("THANK YOU FOR YOUR ORDER", CheckoutCompletePage.thankYouOrderMessage.getText(), "Error: order not completed");
 
     }
@@ -72,10 +60,10 @@ public class Tests {
 
     public void cancellationOfPurchase() {
 
-        loginPage.openLoginPage();
-        loginPage.login();
-        productsPage.addToCart();
-        cartPage.clickToCheckoutButton();
+        LoginPage.openLoginPage();
+        LoginPage.login();
+        ProductsPage.addToCart();
+        CartPage.clickToCheckoutButton();
         CheckoutInformationPage.clickContinueButton();
         CheckoutOverviewPage.clickToCancelButton();
         ProductsPage.products.shouldBe(visible);
@@ -89,14 +77,12 @@ public class Tests {
 
     public void removingAllItemsFromTheCart() {
 
-        loginPage.openLoginPage();
-        loginPage.login();
+        LoginPage.openLoginPage();
+        LoginPage.login();
         ProductsPage.addToCart();
-
-        CartPage.cartBadge.shouldBe(visible);
-        //CartPage.itemsCollection = CartPage.clickToRemoveButton();
-        //removeButtonCollection.first().$(By.xpath("//button[text()='Remove']")).click();
         CartPage.clickToRemoveButton();
+        CartPage.cartBadge.shouldNotBe(visible);
+        Assertions.assertTrue(CartPage.cartButton.getText().contains(""), "Items have not been deleted");
 
     }
 
@@ -106,12 +92,12 @@ public class Tests {
 
     public void calculationOfTheTotalAmountOfItems() {
 
-        loginPage.openLoginPage();
-        loginPage.login();
+        LoginPage.openLoginPage();
+        LoginPage.login();
         ProductsPage.addToCart();
-        cartPage.clickToCheckoutButton();
+        CartPage.clickToCheckoutButton();
         CheckoutInformationPage.clickContinueButton();
-        ElementsCollection selenideElements = CartPage.itemsCollection.shouldBe(visible);
+
 
 
     }

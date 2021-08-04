@@ -7,17 +7,17 @@ import static com.codeborne.selenide.Selenide.open;
 public class LoginPage extends ProductsPage {
 
     //LOGIN FORM FIELDS
-    private final SelenideElement usernameField = $("#user-name");
-    private final SelenideElement passwordField = $("#password");
+    private static final SelenideElement usernameField = $("#user-name");
+    private static final SelenideElement passwordField = $("#password");
 
     //BUTTON
-    private final SelenideElement loginButton = $("#login-button");
+    private static final SelenideElement loginButton = $("#login-button");
 
     //DATA
     private static final CharSequence USERNAME = ("standard_user");
     private static final CharSequence PASSWORD = ("secret_sauce");
 
-    public void login() {
+    public static void login() {
 
         usernameField.sendKeys(USERNAME);
         passwordField.sendKeys(PASSWORD);
@@ -25,7 +25,7 @@ public class LoginPage extends ProductsPage {
 
     }
 
-    public void openLoginPage(){
+    public static void openLoginPage(){
 
         open("https://www.saucedemo.com/");
 

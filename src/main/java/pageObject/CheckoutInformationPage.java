@@ -10,9 +10,8 @@ public class CheckoutInformationPage {
     private static final SelenideElement lastNameField = $("#last-name");
     private static final SelenideElement zipPostalCodeField = $("#postal-code");
 
-    //BUTTONS
+    //BUTTON
     private static final SelenideElement continueButton = $("#continue");
-    private final SelenideElement cancelButton = $("#cancel");
 
     //DATA
     private static final CharSequence FIRST_NAME = ("Maria");
@@ -20,9 +19,11 @@ public class CheckoutInformationPage {
     private static final CharSequence ZIP_POSTAL_CODE = ("256129");
 
     public static void clickContinueButton() {
+
         firstNameField.sendKeys(FIRST_NAME);
         lastNameField.sendKeys(LAST_NAME);
         zipPostalCodeField.sendKeys(ZIP_POSTAL_CODE);
         continueButton.click();
+
     }
 }
