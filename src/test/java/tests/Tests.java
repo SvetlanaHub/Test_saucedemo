@@ -98,10 +98,7 @@ public class Tests {
         ProductsPage.addToCart();
         CartPage.clickToCheckoutButton();
         CheckoutInformationPage.clickContinueButton();
-        String stringPrice = CheckoutOverviewPage.cartItemTotalPrice.getText().replace("Item total: $", "");
-        Double doublePrice = Double.parseDouble(stringPrice);
-        CheckoutOverviewPage.cartItemTotalPrice.shouldBe(visible);
-        //Assertions.assertFalse(parseBoolean(CheckoutOverviewPage.cartItemTotalPrice.getText()), stringPrice), "The amount is not correct");
+        Assertions.assertEquals(CheckoutOverviewPage.sumOrder(), CheckoutOverviewPage.getTotalSum(), "The amount is not correct");
 
     }
 
