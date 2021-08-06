@@ -1,19 +1,18 @@
 package pageObject;
 
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.*;
 public class CartPage {
 
     //BUTTONS
     private static final SelenideElement checkoutButton = $("#checkout");
-    private static final SelenideElement removeBackpack = $("#remove-sauce-labs-backpack");
-    private static final SelenideElement removeBikeLight = $("#remove-sauce-labs-bike-light");
+    private static final ElementsCollection removeButton = $$x("//button[contains(@data-test, 'remove')]");
     public static final SelenideElement cartButton = $(".shopping_cart_link");
 
 
     public static final SelenideElement cartBadge = $(".shopping_cart_badge");
-    private static final SelenideElement cartItemPrice = $(".inventory_item_price");
 
 
     public static void clickToCheckoutButton() {
@@ -23,9 +22,8 @@ public class CartPage {
     }
 
     public static void clickToRemoveButton() {
-
-        removeBackpack.click();
-        removeBikeLight.click();
+        
+        removeButton.stream().forEach(a -> a.click());
 
     }
 

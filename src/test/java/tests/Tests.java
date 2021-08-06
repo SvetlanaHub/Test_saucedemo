@@ -67,6 +67,7 @@ public class Tests {
         CartPage.clickToCheckoutButton();
         CheckoutInformationPage.clickContinueButton();
         CheckoutOverviewPage.clickToCancelButton();
+        CartPage.clickToRemoveButton();
         ProductsPage.products.shouldBe(visible);
         Assertions.assertEquals("PRODUCTS", ProductsPage.products.getText(), "Error: purchase not canceled");
 
