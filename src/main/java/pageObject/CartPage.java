@@ -13,6 +13,8 @@ public class CartPage {
 
 
     public static final SelenideElement cartBadge = $(".shopping_cart_badge");
+    public static final SelenideElement inventoryItem = $(".inventory_item_name");
+
 
 
     public static void clickToCheckoutButton() {

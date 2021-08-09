@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import io.cucumber.java.ru.Допустим;
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Тогда;
-
 import org.junit.jupiter.api.Assertions;
 import pageObject.ProductsPage;
 import tests.Tests;
@@ -22,7 +21,6 @@ public class LoginSteps extends Tests {
 
     @И("на странице присутствует форма логина")
     public void onPagePresentFormLogin() {
-
     }
 
     @И("пользователь вводит имя пользователя \"([^\"]*)\" в поле \"([^\"]*)\"$")
@@ -31,7 +29,7 @@ public class LoginSteps extends Tests {
     }
 
     @И("пользователь вводит пароль \"([^\"]*)\" в поле \"([^\"]*)\"$")
-    public void userEntersPasswordInTheField(String arg0, String arg1) {
+    public void userEntersPasswordInTheField(String arg, String arg1) {
         passwordField.sendKeys(PASSWORD);
     }
 
@@ -44,4 +42,5 @@ public class LoginSteps extends Tests {
     public void userMustSuccessfullyLoginToTheSystemAndGoToTheProductsPage() {
         Assertions.assertEquals("PRODUCTS", ProductsPage.products.getText(), "User is not log in");
     }
+
 }
