@@ -2,11 +2,12 @@ package steps;
 
 import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Тогда;
+
 import org.junit.jupiter.api.Assertions;
 import pageObject.CartPage;
 import tests.Tests;
-import static pageObject.LoginPage.*;
 
+import static pageObject.LoginPage.*;
 
 public class AddingItemSteps extends Tests {
 
