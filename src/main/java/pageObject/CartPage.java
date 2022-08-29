@@ -3,7 +3,9 @@ package pageObject;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+
 import static com.codeborne.selenide.Selenide.*;
+
 public class CartPage {
 
     //BUTTONS
@@ -16,7 +18,6 @@ public class CartPage {
     public static final SelenideElement inventoryItem = $(".inventory_item_name");
 
 
-
     public static void clickToCheckoutButton() {
 
         checkoutButton.click();
@@ -24,7 +25,7 @@ public class CartPage {
     }
 
     public static void clickToRemoveButton() {
-        
+
         removeButton.stream().forEach(a -> a.click());
 
     }
