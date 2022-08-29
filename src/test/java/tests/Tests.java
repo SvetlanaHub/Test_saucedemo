@@ -5,9 +5,9 @@ import com.codeborne.selenide.junit5.ScreenShooterExtension;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import pageObject.*;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -19,7 +19,7 @@ public class Tests {
     static ScreenShooterExtension screenshotEmAll = new ScreenShooterExtension(true).to("resources/screenshots");
 
     @BeforeAll
-    public void setup() {
+    void setup() {
 
         Configuration.startMaximized = true;
 
@@ -29,7 +29,7 @@ public class Tests {
     @Order(1)
     @DisplayName("Login")
 
-    public void Login() {
+    void Login() {
 
         LoginPage.openLoginPage();
         LoginPage.login();
@@ -42,7 +42,7 @@ public class Tests {
     @Order(2)
     @DisplayName("Shopping")
 
-    public void shopping() {
+    void shopping() {
 
         LoginPage.openLoginPage();
         LoginPage.login();
@@ -59,7 +59,7 @@ public class Tests {
     @Order(3)
     @DisplayName("Cancellation of purchase")
 
-    public void cancellationOfPurchase() {
+    void cancellationOfPurchase() {
 
         LoginPage.openLoginPage();
         LoginPage.login();
@@ -77,7 +77,7 @@ public class Tests {
     @Order(4)
     @DisplayName("Removing all items from the cart")
 
-    public void removingAllItemsFromTheCart() {
+    void removingAllItemsFromTheCart() {
 
         LoginPage.openLoginPage();
         LoginPage.login();
@@ -92,7 +92,7 @@ public class Tests {
     @Order(5)
     @DisplayName("Сalculation of the total amount of items")
 
-    public void calculationOfTheTotalAmountOfItems() {
+    void calculationOfTheTotalAmountOfItems() {
 
         LoginPage.openLoginPage();
         LoginPage.login();
@@ -104,13 +104,13 @@ public class Tests {
     }
 
     @AfterAll
-        public void tearDown() {
+    void tearDown() {
 
-            closeWebDriver();
-
-        }
+        closeWebDriver();
 
     }
+
+}
 
 
 
